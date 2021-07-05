@@ -154,7 +154,7 @@ input:focus {
 .movie-element h2,
 .movie-element p {
   font-size: 1.25rem;
-  margin: 0;
+  margin: 1rem;
 }
 
 .movie-element h2 {
@@ -185,6 +185,10 @@ input:focus {
 .movie-element__info {
   flex: 2;
   padding: 1rem;
+}
+
+textarea {
+  resize: none;
 }
 
 #entry-text {
