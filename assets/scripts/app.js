@@ -34,19 +34,25 @@ const deleteMovie = (movieId) => {
   };
   movies.splice(movieIndex, 1);
   movieList.children[movieIndex].remove();
+
+  cancelDeleteMovie();
 };
 
 const cancelDeleteMovie = () => {
-  toggleBackdrop();
   deleteMovieModal.classList.remove('visible');
-  
+  toggleBackdrop();
 }
 
 // = Delete Movie from the list
 const deleteMovieHandler = movieId => {
   deleteMovieModal.classList.add('visible');
   toggleBackdrop();
-  //deleteMovie(movieId);
+
+  const cancelDeteleMovieModal = deleteMovieModal.querySelector('.btn--passive');
+  const confirmDeteleMovieModal = deleteMovieModal.querySelector('.btn--danger');
+
+  cancelDeteleMovieModal.addEventListener('click', cancelDeleteMovie);
+  confirmDeteleMovieModal.addEventListener('click', deleteMovie.bind(null, movieId));
 };
 
 // = Rendering movie list on the screen
