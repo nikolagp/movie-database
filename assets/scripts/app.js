@@ -49,7 +49,12 @@ const deleteMovieHandler = movieId => {
   toggleBackdrop();
 
   const cancelDeteleMovieModal = deleteMovieModal.querySelector('.btn--passive');
-  const confirmDeteleMovieModal = deleteMovieModal.querySelector('.btn--danger');
+  let confirmDeteleMovieModal = deleteMovieModal.querySelector('.btn--danger');
+
+  confirmDeteleMovieModal.replaceWith(confirmDeteleMovieModal.cloneNode(true));
+  confirmDeteleMovieModal = deleteMovieModal.querySelector('.btn--danger');
+
+  cancelDeteleMovieModal.removeEventListener('click', cancelDeleteMovie);
 
   cancelDeteleMovieModal.addEventListener('click', cancelDeleteMovie);
   confirmDeteleMovieModal.addEventListener('click', deleteMovie.bind(null, movieId));
@@ -143,10 +148,10 @@ const confirmAddMovieBtnClick = () => {
   updateUI();
 };
 
-// == Add EventListener to the Add Movie btn and changing classes == //
+// == Add EventListener to the Add Movie btn and changing classes
 startAddMovieBtn.addEventListener('click', showMovieModal);
 
-//== Add EventListener to the backdrop == //
+//== Add EventListener to the backdrop
 backdrop.addEventListener('click', backdropClickHandler);
 
 //== Add EventListener to the Cancel button
